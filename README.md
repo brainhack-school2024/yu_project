@@ -71,6 +71,30 @@ The results of this project did not meet the initial expectations. Both stages o
 
 - **Stage Two Output**: Despite employing the Versatile Diffusion model to refine the images further, the final outputs remained abstract. The refined images did not capture the realism or detail of the natural scenes, and they were not visually recognizable as the intended subjects.
 
+  ![output1](README/output1.png)
+
+- **Feature Extraction**: Each model was assessed based on its ability to capture the underlying patterns of the input images, with results quantified by pairwise correlation coefficients and distance measures. 
+
+  - **InceptionV3 (avgpool layer)** reported a pairwise correlation of 0.6203, indicating a moderate alignment with target image features.
+  - **CLIP (final layer)** achieved a pairwise correlation of 0.6035, slightly lower than InceptionV3.
+  - **AlexNet (layer 2)** showed the highest pairwise correlation among the models at 0.7921, suggesting excellent feature representation capability.
+  - **AlexNet (layer 5)** also performed well, with a pairwise correlation of 0.7825.
+  - **EfficientNet (avgpool layer)** had a distance measure of 0.9596, indicating significant differences in feature representation compared to the target.
+  - **SwAV (avgpool layer)** exhibited a lower distance measure at 0.6504, performing better than EfficientNet in similarity to the target features.
+
+- **Reconstruction Quality**: It was assessed using pixel correlation (PixCorr) and Structural Similarity Index (SSIM). The pixel correlation was 0.1817, and the SSIM was 0.4566, both of which suggest a moderate level of similarity between the generated and ground truth images.
+
+  | Model              | Layer       | Measure       | Value  |
+  | ------------------ | ----------- | ------------- | ------ |
+  | InceptionV3        | avgpool     | Pairwise Corr | 0.6203 |
+  | CLIP               | final       | Pairwise Corr | 0.6035 |
+  | AlexNet            | Layer 2     | Pairwise Corr | 0.7921 |
+  | AlexNet            | Layer 5     | Pairwise Corr | 0.7825 |
+  | EfficientNet       | avgpool     | Distance      | 0.9596 |
+  | SwAV               | avgpool     | Distance      | 0.6504 |
+  | **Reconstruction** | **Metrics** | **PixCorr**   | 0.1817 |
+  |                    |             | **SSIM**      | 0.4566 |
+
 ## 8. Deliverables
 - **README**: This markdown file provides comprehensive documentation of the project's background, methods, results, and conclusions.
 - **`results/` Folder**: Contains the outputs from replicating the Brain Diffuser method, showcasing the stages of image reconstruction from fMRI data.
